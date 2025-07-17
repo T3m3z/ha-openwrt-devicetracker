@@ -1,0 +1,22 @@
+#!/bin/sh /etc/rc.common
+
+START=99
+STOP=11
+
+boot() {
+        return 0
+}
+
+start() {
+        hostapd_cli -B -a /root/onHostapdChange.sh > /dev/null
+}
+
+
+stop() {
+        killall hostapd_cli
+}
+
+restart() {
+        stop
+        start
+}
